@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Homework 11</title>
   
+  <link rel="https://cdn.jsdelivr.net/npm/basiclightbox@5.0.4/dist/basicLightbox.min.css" href="stylesheet" />
   <script type="module" crossorigin src="/goit-js-hw-11/commonHelpers.js"></script>
   <link rel="modulepreload" crossorigin href="/goit-js-hw-11/assets/vendor-db7463ae.js">
   <link rel="stylesheet" href="/goit-js-hw-11/assets/vendor-cf6910df.css">
@@ -14,18 +15,15 @@
 </head>
 
 <body>
-  <section>
-    <form class="search-form">
-      <input type="text" name="search" class="search-input" placeholder="Search images..." />
-      <button class="search-btn" type="submit" data-fetch>Search</button>
-    </form>
-    <span class="loader is-hidden"></span>
-    <div class="wrapper">
-      <ul class="gallery"></ul>
-    </div>
-  </section>
+  <form class="form">
+    <input type="text" class="search-input" placeholder="Search images..." />
+    <button type="submit" class="search-button">Search</button>
+  </form>
 
-  
+  <div class="loader"></div>
+
+  <ul class="gallery"></ul>
+  <script src="https://pixabay.com/api/docs/"></script>
   
 </body>
 
