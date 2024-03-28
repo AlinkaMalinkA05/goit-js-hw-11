@@ -22,4 +22,4 @@ export function getPicture(query) {
             return data
         }).catch((error) => console.log("error"));
 }
-getPicture("cat");
+//getPicture("cat");
