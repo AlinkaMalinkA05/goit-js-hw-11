@@ -83,13 +83,13 @@ button:hover {
   flex-wrap: wrap;
   row-gap: 80px;
   column-gap: 24px;
-  border: 1px solid #808080;
 }
 
 .gallery li {
   flex-basis: calc((100% - 2 * 24px) / 3);
   max-width: 360px;
   max-height: 200px;
+  border: 1px solid #808080;
 }
 
 .gallery-image {
