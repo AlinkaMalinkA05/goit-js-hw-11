@@ -69,7 +69,7 @@ function markup(arr) {
         views,
         comments,
         downloads,
-    }) => `<li class ='gallery'>
+    }) => `<li>
             <a class="gallery-link" href="${largeImageURL}">
             <img class="gallery-image"
                 src="${webformatURL}"

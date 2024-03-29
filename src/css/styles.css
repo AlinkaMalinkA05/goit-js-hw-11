@@ -83,8 +83,6 @@ button:hover {
   flex-wrap: wrap;
   row-gap: 80px;
   column-gap: 24px;
-}
-.gallery-item {
   border: 1px solid #808080;
 }
 
