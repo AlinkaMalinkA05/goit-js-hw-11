@@ -6,7 +6,7 @@
 */
 @import url('./reset.css');
 @import url('./vite-promo.css');
-@import url('./header.css');
+@import url('./loader.css');
 
 :root {
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
@@ -109,8 +109,11 @@ button:hover {
 }
 
 .loader {
-  width: 48px;
-  height: 48px;
+  display: inline-block;
+  width: 45px;
+  height: 45px;
+  left: 50%;
+  transform: translateX(-50%);
   border-radius: 50%;
   position: relative;
   animation: rotate 1s linear infinite;
