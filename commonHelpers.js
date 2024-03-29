@@ -1,27 +1,27 @@
-import"./assets/vendor-db7463ae.js";(function(){const t=document.createElement("link").relList;if(t&&t.supports&&t.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))i(e);new MutationObserver(e=>{for(const r of e)if(r.type==="childList")for(const n of r.addedNodes)n.tagName==="LINK"&&n.rel==="modulepreload"&&i(n)}).observe(document,{childList:!0,subtree:!0});function o(e){const r={};return e.integrity&&(r.integrity=e.integrity),e.referrerPolicy&&(r.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?r.credentials="include":e.crossOrigin==="anonymous"?r.credentials="omit":r.credentials="same-origin",r}function i(e){if(e.ep)return;e.ep=!0;const r=o(e);fetch(e.href,r)}})();function c(s){const t="https://pixabay.com/api/",o="43059548-3adc942b003e7790296d060a7",i=new URLSearchParams({key:o,q:s,image_type:"photo",orientation:"horizontal",safesearch:!0,per_page:40});return fetch(`${t}?${i}`).then(e=>{if(!e.ok)throw new Error("error");return e.json()}).then(e=>(console.log(e),e)).catch(e=>console.log("error"))}const l=document.querySelector(".form");document.querySelector(".search-input");const d=document.querySelector(".gallery");l.addEventListener("submit",f);function f(s){s.preventDefault();const t=l.elements.searchQuery.value.trim();c(t).then(o=>a(o.hits)),c(t).then(o=>console.log(o))}function a(s){s.map(({webformatURL:t,largeImageURL:o,tags:i,likes:e,views:r,comments:n,downloads:u})=>`<a class="gallery-link" href="${o}">
+import{i as a,S as m}from"./assets/vendor-5b791d57.js";(function(){const o=document.createElement("link").relList;if(o&&o.supports&&o.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))i(e);new MutationObserver(e=>{for(const r of e)if(r.type==="childList")for(const n of r.addedNodes)n.tagName==="LINK"&&n.rel==="modulepreload"&&i(n)}).observe(document,{childList:!0,subtree:!0});function t(e){const r={};return e.integrity&&(r.integrity=e.integrity),e.referrerPolicy&&(r.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?r.credentials="include":e.crossOrigin==="anonymous"?r.credentials="omit":r.credentials="same-origin",r}function i(e){if(e.ep)return;e.ep=!0;const r=t(e);fetch(e.href,r)}})();function c(s){const o="https://pixabay.com/api/",t="43059548-3adc942b003e7790296d060a7",i=new URLSearchParams({key:t,q:s,image_type:"photo",orientation:"horizontal",safesearch:!0,per_page:40});return fetch(`${o}?${i}`).then(e=>{if(!e.ok)throw new Error("error");return e.json()}).then(e=>(console.log(e),e)).catch(e=>console.log("error"))}const d=document.querySelector(".form");document.querySelector(".search-input");const u=document.querySelector(".gallery"),l=document.querySelector(".loader");d.addEventListener("submit",p);function p(s){s.preventDefault(),u.innerHTML="";const o=d.elements.searchQuery.value.trim();if(c(o).then(t=>{if(t.hits.length===0)return a.error({message:"Sorry, there are no images matching your search query. Please try again!",title:"Error",position:"topRight"});y(t.hits)}),o===""){a.error({title:"Error",message:"Field can`t be empty ",position:"topRight"}),l.classList.add("is-hidden");return}l.classList.remove("is-hidden"),c(o).then(t=>console.log(t)).catch(t=>{a.error({title:"Error",message:`${t.message||"Something went wrong"}`,backgroundColor:"#EF4040",messageColor:"#fff",titleColor:"#fff",progressBarColor:"#B51B1B",position:"topRight"})}).finally(()=>{l.classList.add("is-hidden")})}const g=new m(".gallery-item a",{captionsData:"alt",captionDelay:250,captionPosition:"bottom"});function y(s){const o=s.map(({webformatURL:t,largeImageURL:i,tags:e,likes:r,views:n,comments:h,downloads:f})=>`<a class="gallery-link" href="${i}">
             <img class="gallery-image"
                 src="${t}"
-                alt="${i}"
+                alt="${e}"
                 width="360"
                 height="152"/>
         </a>
         <div class='info-block'>
             <div class="info">
                 <h3 class = "head-likes">Likes</h3>
-                <p>${e}</p>
-            </div>
-            <div class="info">
-                <h3 class = "head-views">Views</h3>
                 <p>${r}</p>
             </div>
             <div class="info">
-                <h3 class = "head-comments">Comments</h3>
+                <h3 class = "head-views">Views</h3>
                 <p>${n}</p>
             </div>
             <div class="info">
+                <h3 class = "head-comments">Comments</h3>
+                <p>${h}</p>
+            </div>
+            <div class="info">
                 <h3 class = "head-downloads">Downloads</h3>
-                <p>${u}</p>
+                <p>${f}</p>
             </div>
         </div>
-    </li>`).join(""),d.innerHTML=a,lightbox.refresh()}
+    </li>`).join("");u.innerHTML=o,g.refresh()}
 //# sourceMappingURL=commonHelpers.js.map
