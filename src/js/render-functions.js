@@ -55,7 +55,7 @@ function handleSubmit(event) {
     });
 }
 
-const lightbox = new SimpleLightbox('.gallery-item a', {
+const lightbox = new SimpleLightbox('.gallery a', {
   captionsData: 'alt',
   captionDelay: 250,
   captionPosition: 'bottom',
@@ -69,7 +69,8 @@ function markup(arr) {
         views,
         comments,
         downloads,
-    }) => `<a class="gallery-link" href="${largeImageURL}">
+    }) => `<li class ='gallery'>
+            <a class="gallery-link" href="${largeImageURL}">
             <img class="gallery-image"
                 src="${webformatURL}"
                 alt="${tags}"
