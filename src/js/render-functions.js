@@ -7,20 +7,59 @@ import SimpleLightbox from "simplelightbox";
 // Додатковий імпорт стилів
 import "simplelightbox/dist/simple-lightbox.min.css";
 import { getPicture } from "./pixabay-api";
+
 const form = document.querySelector(".form");
 const input = document.querySelector(".search-input")
 const gallery = document.querySelector(".gallery")
-const loader =
+const loader = document.querySelector(".loader")
 
 form.addEventListener("submit", handleSubmit)
 function handleSubmit(event) {
     event.preventDefault();
+    gallery.innerHTML = '';
     const findValue = form.elements.searchQuery.value.trim();
-    getPicture(findValue).then(data => markup(data.hits))
-
-
-    getPicture(findValue).then((data)=>console.log(data))
+    getPicture(findValue).then(data => {
+        if (data.hits.length === 0) return iziToast.error({
+            message: "Sorry, there are no images matching your search query. Please try again!",
+            title: "Error",
+            position: "topRight"
+        });
+        markup(data.hits);
+    });
+    if (findValue === "") {
+        iziToast.error({
+            title: 'Error',
+            message: 'Field can`t be empty ',
+            position: "topRight"
+        });
+        loader.classList.add('is-hidden');
+    return;
+  }
+  loader.classList.remove('is-hidden');
+    
+    getPicture(findValue)
+        .then((data) => console.log(data))
+        .catch(error => {
+      iziToast.error({
+        title: 'Error',
+        message: `${error.message || 'Something went wrong'}`,
+        backgroundColor: '#EF4040',
+        messageColor: '#fff',
+        titleColor: '#fff',
+        progressBarColor: '#B51B1B',
+        position: 'topRight',
+      });
+        })
+    .finally(() => {
+      loader.classList.add('is-hidden');
+    });
 }
+
+const lightbox = new SimpleLightbox('.gallery-item a', {
+  captionsData: 'alt',
+  captionDelay: 250,
+  captionPosition: 'bottom',
+});
 function markup(arr) {
     const newMarkup = arr.map(({
         webformatURL,
@@ -30,7 +69,7 @@ function markup(arr) {
         views,
         comments,
         downloads,
-      }) => `<a class="gallery-link" href="${largeImageURL}">
+    }) => `<a class="gallery-link" href="${largeImageURL}">
             <img class="gallery-image"
                 src="${webformatURL}"
                 alt="${tags}"
@@ -59,7 +98,7 @@ function markup(arr) {
     )
     .join('');
 
-  gallery.innerHTML = markup;
-  lightbox.refresh();
+gallery.innerHTML = newMarkup;
+lightbox.refresh();
 }
     
